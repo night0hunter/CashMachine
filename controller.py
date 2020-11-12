@@ -7,7 +7,6 @@ from widgets.menu import Menu
 from widgets.addSum import AddSum
 from widgets.takeSum import TakeSum
 
-
 class Controller:
     def __init__(self):
         pass
