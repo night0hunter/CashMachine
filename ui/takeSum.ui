@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>367</width>
-    <height>472</height>
+    <width>371</width>
+    <height>497</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>400</y>
+     <y>450</y>
      <width>261</width>
      <height>41</height>
     </rect>
@@ -80,7 +80,7 @@
     <string>Введите свою сумму:</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_9">
+  <widget class="QPushButton" name="sum_500">
    <property name="geometry">
     <rect>
      <x>200</x>
@@ -98,7 +98,7 @@
     <string>500</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_6">
+  <widget class="QPushButton" name="sum_100">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -116,7 +116,7 @@
     <string>100</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_7">
+  <widget class="QPushButton" name="sum_1000">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -134,7 +134,7 @@
     <string>1000</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_8">
+  <widget class="QPushButton" name="sum_5000">
    <property name="geometry">
     <rect>
      <x>200</x>
@@ -168,6 +168,35 @@
    </property>
    <property name="text">
     <string>Снять со счёта</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="error_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>240</y>
+     <width>261</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="error_3">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>410</y>
+     <width>261</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
  </widget>
