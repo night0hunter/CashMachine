@@ -2,7 +2,7 @@ import sys
 from PyQt5 import QtCore, QtWidgets
 from PyQt5 import uic
 import sqlite3
-
+# from PyQt5.QtGui import QPixmap
 class Authorization(QtWidgets.QWidget):
 
     switch_menu = QtCore.pyqtSignal(dict)
@@ -11,6 +11,7 @@ class Authorization(QtWidgets.QWidget):
         QtWidgets.QWidget.__init__(self)
         uic.loadUi('./ui/authorization.ui', self)
         self.auth_btn_2.clicked.connect(self.auth)
+        # self.hide_password.clicked.connect(self.hidePassword)
 
     def auth(self):
         con = sqlite3.connect("cash_machine.db")
@@ -38,3 +39,8 @@ class Authorization(QtWidgets.QWidget):
                 self.error2.setText("Неверно введен логин или пароль!")
         else:
             self.error2.setText("Для успешной авторизации\nнеобходимо заполнить все поля!")
+
+    # def hidePassword(self):
+        # pixmap = QtWidgets.QPixmap('../images/.eye.jpg')
+        # self.hide_password.setPixmap(pixmap)
+        # self.resize(pixmap.width(), pixmap.height())
