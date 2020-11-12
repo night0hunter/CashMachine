@@ -3,7 +3,8 @@ from PyQt5 import QtCore, QtWidgets
 from PyQt5 import uic
 import sqlite3
 import re
-DB_NAME = "cash_machine.db"
+from service.service import create_log
+import cfg
 
 class AddSum(QtWidgets.QWidget):
 
@@ -13,6 +14,11 @@ class AddSum(QtWidgets.QWidget):
         QtWidgets.QWidget.__init__(self)
         uic.loadUi('./ui/addSum.ui', self)
         self.getCash.clicked.connect(self.addSum)
+        self.sum_100.clicked.connect(self.change_line_edit)
+        self.sum_500.clicked.connect(self.change_line_edit)
+        self.sum_1000.clicked.connect(self.change_line_edit)
+        self.sum_5000.clicked.connect(self.change_line_edit)
+        self.cash.setText("10")
         self.user = user
 
     def validation(self, money):
@@ -25,16 +31,21 @@ class AddSum(QtWidgets.QWidget):
         error = self.validation(self.cash.text())
         if not error:
             self.user["money"] += float(self.cash.text())
-            con = sqlite3.connect(DB_NAME)
+            con = sqlite3.connect(cfg.DB_NAME)
             cur = con.cursor()
             result = cur.execute("""UPDATE users
                         SET money = ?
                         WHERE id = ?""", [self.user["money"], self.user["account"]])
             con.commit()
             if result:
+                create_log(f"addSum: user_id - {self.user['account']} money - {self.user['money']}")
+                #service.create_log(f"addSum: user_id - {self.user['account']} money - {self.user['money']}")
                 self.close()
                 self.switch_menu.emit(self.user)
             else:
-                print("error")
+                self.error.setText("Ошибка пополнения счёта")
         else:
-            print(error)
+            self.error.setText("Некорректно заполнено поле")
+    
+    def change_line_edit(self):
+        self.cash.setText(self.sender().text())

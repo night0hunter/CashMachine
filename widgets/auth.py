@@ -3,9 +3,9 @@ from PyQt5 import QtCore, QtWidgets
 from PyQt5 import uic
 import sqlite3
 from PyQt5.QtWidgets import QLineEdit
+import cfg
 
-
-DB_NAME = "cash_machine.db"
+# DB_NAME = "cash_machine.db"
 
 
 class Authorization(QtWidgets.QWidget):
@@ -20,7 +20,7 @@ class Authorization(QtWidgets.QWidget):
         self.password_value.setEchoMode(QLineEdit.Password)
 
     def auth(self):
-        con = sqlite3.connect(DB_NAME)
+        con = sqlite3.connect(cfg.DB_NAME)
         cur = con.cursor()
         data = {
             "login": self.login_value.text(),
