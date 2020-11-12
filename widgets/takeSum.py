@@ -4,7 +4,7 @@ from PyQt5 import uic
 import sqlite3
 import re
 import cfg
-
+from service.service import create_log
 
 class TakeSum(QtWidgets.QWidget):
 
@@ -40,6 +40,7 @@ class TakeSum(QtWidgets.QWidget):
                             WHERE id = ?""", [takeMoney, self.user["account"]])
                 con.commit()
                 if result:
+                    create_log(f"takeSum: user_id - {self.user['account']} money - {takeMoney}")
                     self.close()
                     self.switch_menu.emit(self.user)
                 else:

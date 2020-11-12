@@ -39,7 +39,6 @@ class AddSum(QtWidgets.QWidget):
             con.commit()
             if result:
                 create_log(f"addSum: user_id - {self.user['account']} money - {self.user['money']}")
-                #service.create_log(f"addSum: user_id - {self.user['account']} money - {self.user['money']}")
                 self.close()
                 self.switch_menu.emit(self.user)
             else:

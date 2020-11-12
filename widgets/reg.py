@@ -5,6 +5,7 @@ import datetime
 import re
 import sqlite3
 import cfg
+from service.service import create_log
 
 class Registration(QtWidgets.QWidget):
 
@@ -73,6 +74,7 @@ class Registration(QtWidgets.QWidget):
             con.commit()
             con.close()
             if result:
+                create_log(f"reg: user_login - {data['login']} first_name - {data['first_name']} last_name - {data['last_name']}")
                 self.close()
                 self.switch_menu.emit()
         else:

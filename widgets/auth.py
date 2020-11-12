@@ -4,6 +4,7 @@ from PyQt5 import uic
 import sqlite3
 from PyQt5.QtWidgets import QLineEdit
 import cfg
+from service.service import create_log
 
 # DB_NAME = "cash_machine.db"
 
@@ -40,6 +41,7 @@ class Authorization(QtWidgets.QWidget):
                     "date_joined": result[0][7],
                     "money": result[0][8]
                 }
+                create_log(f"auth: user_id - {curUser['account']}")
                 self.close()
                 self.switch_menu.emit(curUser)
             else:
