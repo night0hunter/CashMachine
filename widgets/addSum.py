@@ -21,7 +21,7 @@ class AddSum(QtWidgets.QWidget):
         return ""
 
     def addSum(self):
-        error = self.validation(self.cash.text()) 
+        error = self.validation(self.cash.text())
         if not error:
             self.user["money"] += float(self.cash.text())
             con = sqlite3.connect("cash_machine.db")
@@ -29,6 +29,7 @@ class AddSum(QtWidgets.QWidget):
             result = cur.execute("""UPDATE users
                         SET money = ?
                         WHERE id = ?""", [self.user["money"], self.user["account"]])
+            con.commit()
             if result:
                 self.close()
                 self.switch_menu.emit(self.user)
