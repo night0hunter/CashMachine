@@ -2,13 +2,12 @@ import sys
 from PyQt5 import QtCore, QtWidgets
 from PyQt5 import uic
 import sqlite3
-<<<<<<< HEAD
-# from PyQt5.QtGui import QPixmap
-=======
+from PyQt5.QtWidgets import QLineEdit
+
 
 DB_NAME = "cash_machine.db"
 
->>>>>>> d0f62e961e6e380b5fd8d2ecdf7c5dff7f4d6ac3
+
 class Authorization(QtWidgets.QWidget):
 
     switch_menu = QtCore.pyqtSignal(dict)
@@ -17,7 +16,8 @@ class Authorization(QtWidgets.QWidget):
         QtWidgets.QWidget.__init__(self)
         uic.loadUi('./ui/authorization.ui', self)
         self.auth_btn_2.clicked.connect(self.auth)
-        # self.hide_password.clicked.connect(self.hidePassword)
+        self.hide_password.clicked.connect(self.hidePassword)
+        self.password_value.setEchoMode(QLineEdit.Password)
 
     def auth(self):
         con = sqlite3.connect(DB_NAME)
@@ -27,7 +27,8 @@ class Authorization(QtWidgets.QWidget):
             "password": self.password_value.text()
         }
         if data["login"] and data["password"]:
-            result = cur.execute(f"""SELECT * FROM users WHERE login == \"{data['login']}\" AND password == \"{data['password']}\"""").fetchall()
+            result = cur.execute(
+                f"""SELECT * FROM users WHERE login == \"{data['login']}\" AND password == \"{data['password']}\"""").fetchall()
             if result:
                 curUser = {
                     "account": result[0][0],
@@ -44,9 +45,12 @@ class Authorization(QtWidgets.QWidget):
             else:
                 self.error2.setText("Неверно введен логин или пароль!")
         else:
-            self.error2.setText("Для успешной авторизации\nнеобходимо заполнить все поля!")
+            self.error2.setText(
+                "Для успешной авторизации\nнеобходимо заполнить все поля!")
 
-    # def hidePassword(self):
-        # pixmap = QtWidgets.QPixmap('../images/.eye.jpg')
-        # self.hide_password.setPixmap(pixmap)
-        # self.resize(pixmap.width(), pixmap.height())
+    def hidePassword(self):
+        print(self.password_value.EchoMode())
+        if self.password_value.EchoMode() == 2:
+            self.password_value.setEchoMode(QLineEdit.Normal)
+        elif self.password_value.EchoMode() == 0:
+            self.password_value.setEchoMode(QLineEdit.Password)
