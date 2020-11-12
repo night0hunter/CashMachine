@@ -7,7 +7,7 @@ class Menu(QtWidgets.QWidget):
 
     switch_mainWindow = QtCore.pyqtSignal()
     switch_addSum = QtCore.pyqtSignal(dict)
-    switch_takeSum = QtCore.pyqtSignal()
+    switch_takeSum = QtCore.pyqtSignal(dict)
 
     def __init__(self, user):
         QtWidgets.QWidget.__init__(self)
@@ -36,4 +36,4 @@ class Menu(QtWidgets.QWidget):
 
     def take(self):
         self.close()
-        self.switch_takeSum.emit()
+        self.switch_takeSum.emit(self.user)
