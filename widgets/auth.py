@@ -2,7 +2,13 @@ import sys
 from PyQt5 import QtCore, QtWidgets
 from PyQt5 import uic
 import sqlite3
+<<<<<<< HEAD
 # from PyQt5.QtGui import QPixmap
+=======
+
+DB_NAME = "cash_machine.db"
+
+>>>>>>> d0f62e961e6e380b5fd8d2ecdf7c5dff7f4d6ac3
 class Authorization(QtWidgets.QWidget):
 
     switch_menu = QtCore.pyqtSignal(dict)
@@ -14,7 +20,7 @@ class Authorization(QtWidgets.QWidget):
         # self.hide_password.clicked.connect(self.hidePassword)
 
     def auth(self):
-        con = sqlite3.connect("cash_machine.db")
+        con = sqlite3.connect(DB_NAME)
         cur = con.cursor()
         data = {
             "login": self.login_value.text(),

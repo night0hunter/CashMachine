@@ -34,8 +34,8 @@ class Controller:
         self.addSum.switch_menu.connect(self.show_menu)
         self.addSum.show()
 
-    def show_takeSum(self):
-        self.takeSum = TakeSum()
+    def show_takeSum(self, user):
+        self.takeSum = TakeSum(user)
         self.takeSum.switch_menu.connect(self.show_menu)
         self.takeSum.show()
 
