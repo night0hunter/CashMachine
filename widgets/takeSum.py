@@ -23,10 +23,10 @@ class TakeSum(QtWidgets.QWidget):
         return ""
 
     def takeSum(self):
-        error = self.validation(self.takeCash.text())
+        error = self.validation(self.takeCashLineEdit.text())
         if not error:
-            if self.user["money"] > float(self.cash.text()):
-                self.user["money"] -= float(self.cash.text())
+            if self.user["money"] > float(self.takeCashLineEdit.text()):
+                self.user["money"] -= float(self.takeCashLineEdit.text())
                 con = sqlite3.connect(DB_NAME)
                 cur = con.cursor()
                 result = cur.execute("""UPDATE users

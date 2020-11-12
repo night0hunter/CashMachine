@@ -1,5 +1,5 @@
 import sys
-from PyQt5 import QtCore, QtWidgets
+from PyQt5 import QtWidgets
 from widgets.mainWindow import MainWindow
 from widgets.auth import Authorization
 from widgets.reg import Registration

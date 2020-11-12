@@ -31,7 +31,7 @@
     <string>Снять</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_2">
+  <widget class="QLineEdit" name="takeCashLineEdit">
    <property name="geometry">
     <rect>
      <x>50</x>
