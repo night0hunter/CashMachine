@@ -4,7 +4,7 @@ from PyQt5 import uic
 import datetime
 import re
 import sqlite3
-
+DB_NAME = "cash_machine.db"
 
 class Registration(QtWidgets.QWidget):
 
@@ -43,7 +43,7 @@ class Registration(QtWidgets.QWidget):
         if not pattern_password.match(data["password"]):
             return "Пароль должен содержать как минимум 8 символов, \nвключая 1 спецсимвол, 1 цифру,\n 1 латинскую букву в верхнем и нижнем регистре"
 
-        con = sqlite3.connect("cash_machine.db")
+        con = sqlite3.connect(DB_NAME)
         cur = con.cursor()
         result = cur.execute(
             f"SELECT * FROM users WHERE login == \"{data['login']}\"").fetchall()
@@ -64,7 +64,7 @@ class Registration(QtWidgets.QWidget):
         }
         error = self.__validation(data)
         if not error:
-            con = sqlite3.connect("cash_machine.db")
+            con = sqlite3.connect(DB_NAME)
             cur = con.cursor()
             sql = ("""INSERT INTO users(first_name, last_name, patronymic, login, password,
                     birth_date, date_joined) VALUES(?,?,?,?,?,?,?)""")
