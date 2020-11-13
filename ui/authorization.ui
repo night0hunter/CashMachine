@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>396</width>
+    <width>350</width>
     <height>260</height>
    </rect>
   </property>
@@ -16,7 +16,7 @@
   <widget class="QPushButton" name="auth_btn_2">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>70</x>
      <y>190</y>
      <width>201</width>
      <height>61</height>
@@ -89,9 +89,9 @@
   <widget class="QLabel" name="error2">
    <property name="geometry">
     <rect>
-     <x>70</x>
+     <x>30</x>
      <y>130</y>
-     <width>251</width>
+     <width>291</width>
      <height>41</height>
     </rect>
    </property>
@@ -119,19 +119,6 @@
    </property>
    <property name="echoMode">
     <enum>QLineEdit::Password</enum>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="hide_password">
-   <property name="geometry">
-    <rect>
-     <x>340</x>
-     <y>70</y>
-     <width>41</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
    </property>
   </widget>
  </widget>
