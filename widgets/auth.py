@@ -1,4 +1,3 @@
-import sys
 from PyQt5 import QtCore, QtWidgets
 from PyQt5 import uic
 import sqlite3
@@ -16,8 +15,12 @@ class Authorization(QtWidgets.QWidget):
         QtWidgets.QWidget.__init__(self)
         uic.loadUi('./ui/authorization.ui', self)
         self.auth_btn_2.clicked.connect(self.auth)
-        # self.hide_password.clicked.connect(self.hidePassword)
-        # self.password_value.setEchoMode(QLineEdit.Password)
+        self.hide_password.clicked.connect(self.hidePassword)
+        self.password_value.setEchoMode(QLineEdit.Password)
+        self.hide_password.setStyleSheet("""
+                                            background-image : url(./media/hide.png); 
+                                            background-repeat: no-repeat;  
+                                            background-position: center;""")
 
     def auth(self):
         con = sqlite3.connect(cfg.DB_NAME)
@@ -50,9 +53,18 @@ class Authorization(QtWidgets.QWidget):
             self.error2.setText(
                 "Для успешной авторизации\nнеобходимо заполнить все поля!")
 
-    # def hidePassword(self):
-    #     print(self.password_value.EchoMode())
-    #     if self.password_value.EchoMode() == 2:
-    #         self.password_value.setEchoMode(QLineEdit.Normal)
-    #     elif self.password_value.EchoMode() == 0:
-    #         self.password_value.setEchoMode(QLineEdit.Password)
+
+    def hidePassword(self):
+        print(self.password_value.echoMode())
+        if self.password_value.echoMode() == 2:
+            self.password_value.setEchoMode(QLineEdit.Normal)
+            self.hide_password.setStyleSheet("""
+                                            background-image : url(./media/visible.png); 
+                                            background-repeat: no-repeat;  
+                                            background-position: center;""")
+        elif self.password_value.echoMode() == 0:
+            self.password_value.setEchoMode(QLineEdit.Password)
+            self.hide_password.setStyleSheet("""
+                                            background-image : url(./media/hide.png); 
+                                            background-repeat: no-repeat;  
+                                            background-position: center;""")
