@@ -22,16 +22,18 @@ class TakeSum(QtWidgets.QWidget):
         self.user = user
 
     def validation(self, money):
+        """Валидация введенных данных"""
         pattern_money = re.compile(r'^[0-9]{1,10}[.]{0,1}[0-9]{0,2}$')
         if not pattern_money.match(money):
             return "Некорректно заполнено поле"
         return ""
 
     def takeSum(self):
+        """Снятие средств со счёта"""
         error = self.validation(self.takeCashLineEdit.text())
         if not error:
             takeMoney = float(self.takeCashLineEdit.text())
-            if self.user["money"] > takeMoney:
+            if self.user["money"] >= takeMoney:
                 self.user["money"] -= takeMoney
                 con = sqlite3.connect(cfg.DB_NAME)
                 cur = con.cursor()

@@ -22,12 +22,16 @@ class AddSum(QtWidgets.QWidget):
         self.user = user
 
     def validation(self, money):
+        """Валидация введенных данных"""
+
         pattern_money = re.compile(r'^[0-9]{1,10}[.]{0,1}[0-9]{0,2}$')
         if not pattern_money.match(money):
             return "Некорректно заполнено поле"
         return ""
 
     def addSum(self):
+        """Пополнение средств"""
+        
         error = self.validation(self.cash.text())
         if not error:
             self.user["money"] += float(self.cash.text())

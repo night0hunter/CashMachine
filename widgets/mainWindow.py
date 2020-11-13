@@ -14,10 +14,14 @@ class MainWindow(QtWidgets.QWidget):
         self.reg_2.clicked.connect(self.swReg)
 
     def swAuth(self):
+        """Закрытие нынешнего окна и открытие окна авторизации"""
+
         self.close()
         self.switch_auth.emit()
 
     def swReg(self):
+        """Закрытие нынешнего окна и открытие окна регистрации"""
+
         self.close()
         self.switch_reg.emit()
 

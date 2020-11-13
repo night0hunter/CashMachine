@@ -27,13 +27,19 @@ class Menu(QtWidgets.QWidget):
         self.user = user
         
     def menu(self):
+        """Закрытие нынешнего окна и открытие меню"""
+
         self.close()
         self.switch_mainWindow.emit()
 
     def add(self):
+        """Закрытие нынешнего окна и открытие окна пополнения средств"""
+    
         self.close()
         self.switch_addSum.emit(self.user)
 
     def take(self):
+        """Закрытие нынешнего окна и открытие окна снятия средств"""
+    
         self.close()
         self.switch_takeSum.emit(self.user)

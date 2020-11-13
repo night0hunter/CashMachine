@@ -23,6 +23,8 @@ class Authorization(QtWidgets.QWidget):
                                             background-position: center;""")
 
     def auth(self):
+        """Авторизация пользователя"""
+        
         con = sqlite3.connect(cfg.DB_NAME)
         cur = con.cursor()
         hash_password = hashlib.sha512(self.password_value.text().encode("utf-8")).hexdigest()
@@ -55,6 +57,8 @@ class Authorization(QtWidgets.QWidget):
 
 
     def hidePassword(self):
+        """Функция скрытия пароля"""
+
         if self.password_value.echoMode() == 2:
             self.password_value.setEchoMode(QLineEdit.Normal)
             self.hide_password.setStyleSheet("""

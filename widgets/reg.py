@@ -19,6 +19,8 @@ class Registration(QtWidgets.QWidget):
         self.register_2.clicked.connect(self.reg)
 
     def __validation(self, data):
+        """Валидация регистрационных данных"""
+
         pattern_password = re.compile(
             r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$')
 
@@ -56,6 +58,8 @@ class Registration(QtWidgets.QWidget):
         return ""
 
     def reg(self):
+        """Регистрация пользователя и добавление его в БД"""
+
         data = {
             "first_name": self.first_name.text(),
             "last_name": self.last_name.text(),
