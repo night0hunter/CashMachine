@@ -55,7 +55,6 @@ class Authorization(QtWidgets.QWidget):
 
 
     def hidePassword(self):
-        print(self.password_value.echoMode())
         if self.password_value.echoMode() == 2:
             self.password_value.setEchoMode(QLineEdit.Normal)
             self.hide_password.setStyleSheet("""

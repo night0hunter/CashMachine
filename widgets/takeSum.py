@@ -24,7 +24,7 @@ class TakeSum(QtWidgets.QWidget):
     def validation(self, money):
         pattern_money = re.compile(r'^[0-9]{1,10}[.]{0,1}[0-9]{0,2}$')
         if not pattern_money.match(money):
-            self.error.setText("Некорректно заполнено поле")
+            return "Некорректно заполнено поле"
         return ""
 
     def takeSum(self):
