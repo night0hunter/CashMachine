@@ -13,7 +13,7 @@ class Controller:
 
     def show_auth(self):
         """Открытие окна авторизации"""
-
+ 
         self.auth = Authorization()
         self.auth.switch_menu.connect(self.show_menu)
         self.auth.show()
@@ -64,7 +64,7 @@ def main():
     controller = Controller()
     controller.show_main()
     sys.exit(app.exec_())
-
+# hello world
 
 if __name__ == '__main__':
     main()
